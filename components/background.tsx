@@ -1,6 +1,7 @@
-// Pure-CSS recreation of the mockup's background — drifting grid, aurora wash,
-// a floating "neural core" (replaces the 2.8MB brain GIF), and CRT scanlines.
-// Zero JS, zero image bytes, all GPU transforms. aria-hidden / non-interactive.
+// Pure-CSS background layers plus the original animated brain GIF.
+// The GIF (Anatomography CC BY-SA) is filtered via CSS to match the
+// current theme/mode accent colour — no JS, no canvas.
+// aria-hidden / non-interactive throughout.
 
 export function Background() {
   return (
@@ -23,6 +24,7 @@ export function Background() {
             "radial-gradient(120% 90% at 50% 0%, #000 30%, transparent 88%)",
         }}
       />
+
       {/* aurora */}
       <div
         aria-hidden="true"
@@ -39,66 +41,39 @@ export function Background() {
           transition: "opacity 0.6s ease",
         }}
       />
-      {/* floating neural core — outer glow */}
+
+      {/* floating brain — anatomical GIF, colourised to match accent */}
       <div
         aria-hidden="true"
         style={{
           position: "fixed",
-          top: "46%",
-          left: "58%",
+          top: "48%",
+          left: "50%",
           zIndex: 0,
           pointerEvents: "none",
-          width: "min(80vw, 820px)",
+          width: "min(70vw, 720px)",
           aspectRatio: "1 / 1",
           transform: "translate(-50%, -50%)",
           animation: "coreFloat 9s ease-in-out infinite",
-          opacity: "calc(var(--core-op) * 0.9)",
-          mixBlendMode: "var(--core-blend)" as React.CSSProperties["mixBlendMode"],
-          background:
-            "radial-gradient(circle at 50% 46%, color-mix(in srgb, var(--accent-text) 55%, transparent) 0%, color-mix(in srgb, var(--accent) 28%, transparent) 30%, color-mix(in srgb, var(--accent) 10%, transparent) 55%, transparent 70%)",
-          filter: "blur(32px) saturate(1.8) hue-rotate(calc(var(--core-hue) - 78deg))",
+          opacity: "var(--core-op, 0.55)",
+          transition: "opacity 0.6s ease",
         }}
-      />
-      {/* neural core — inner bright nucleus */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "fixed",
-          top: "46%",
-          left: "58%",
-          zIndex: 0,
-          pointerEvents: "none",
-          width: "min(36vw, 380px)",
-          aspectRatio: "1 / 1",
-          transform: "translate(-50%, -50%)",
-          animation: "coreFloat 9s ease-in-out infinite 1.5s",
-          opacity: "calc(var(--core-op) * 1.2)",
-          mixBlendMode: "var(--core-blend)" as React.CSSProperties["mixBlendMode"],
-          background:
-            "radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent-text) 70%, transparent) 0%, color-mix(in srgb, var(--accent-text) 30%, transparent) 40%, transparent 70%)",
-          filter: "blur(16px) saturate(2)",
-        }}
-      />
-      {/* neural core — concentric ring */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "fixed",
-          top: "46%",
-          left: "58%",
-          zIndex: 0,
-          pointerEvents: "none",
-          width: "min(56vw, 580px)",
-          aspectRatio: "1 / 1",
-          transform: "translate(-50%, -50%)",
-          animation: "coreFloat 12s ease-in-out infinite reverse",
-          opacity: "calc(var(--core-op) * 0.6)",
-          mixBlendMode: "var(--core-blend)" as React.CSSProperties["mixBlendMode"],
-          background:
-            "radial-gradient(circle at 50% 50%, transparent 44%, color-mix(in srgb, var(--accent) 40%, transparent) 48%, color-mix(in srgb, var(--accent) 15%, transparent) 54%, transparent 60%)",
-          filter: "blur(8px)",
-        }}
-      />
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/brain.gif"
+          alt=""
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            mixBlendMode: "var(--core-blend, screen)" as React.CSSProperties["mixBlendMode"],
+            filter:
+              "invert(var(--core-invert, 1)) sepia(0.55) saturate(2.6) hue-rotate(var(--core-hue, 78deg)) brightness(1.12)",
+          }}
+        />
+      </div>
+
       {/* CRT scanlines */}
       <div
         aria-hidden="true"
