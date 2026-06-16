@@ -1,0 +1,79 @@
+{
+  "generatedAt": "2026-06-16T12:48:30.469Z",
+  "source": "github-api (anon)",
+  "count": 5,
+  "contributors": [
+    {
+      "login": "Praneel7015",
+      "name": "Praneel7015",
+      "handle": "Praneel7015",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/71339092?v=4",
+      "htmlUrl": "https://github.com/Praneel7015",
+      "contributions": 80,
+      "projects": [
+        "auralis",
+        "flowforge",
+        "future-you-mirror",
+        "namma-city",
+        "sankalp-learning",
+        "sanmargaha"
+      ],
+      "squad": "both",
+      "initials": "PR"
+    },
+    {
+      "login": "Ojasvi-Poonia",
+      "name": "Ojasvi Poonia",
+      "handle": "Ojasvi-Poonia",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/137184308?v=4",
+      "htmlUrl": "https://github.com/Ojasvi-Poonia",
+      "contributions": 42,
+      "projects": [
+        "agentathon",
+        "flowforge",
+        "namma-city"
+      ],
+      "squad": "both",
+      "initials": "OP"
+    },
+    {
+      "login": "Owais-cmd",
+      "name": "Owais-cmd",
+      "handle": "Owais-cmd",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/179102416?v=4",
+      "htmlUrl": "https://github.com/Owais-cmd",
+      "contributions": 26,
+      "projects": [
+        "namma-city"
+      ],
+      "squad": "low",
+      "initials": "OC"
+    },
+    {
+      "login": "thotaDeepika",
+      "name": "thotaDeepika",
+      "handle": "thotaDeepika",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/233524360?v=4",
+      "htmlUrl": "https://github.com/thotaDeepika",
+      "contributions": 3,
+      "projects": [
+        "namma-city"
+      ],
+      "squad": "low",
+      "initials": "TH"
+    },
+    {
+      "login": "nikhil-yn-aix",
+      "name": "nikhil-yn-aix",
+      "handle": "nikhil-yn-aix",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/192443240?v=4",
+      "htmlUrl": "https://github.com/NikByteSized",
+      "contributions": 2,
+      "projects": [
+        "auralis"
+      ],
+      "squad": "low",
+      "initials": "NY"
+    }
+  ]
+}

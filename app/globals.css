@@ -1,0 +1,301 @@
+@import "tailwindcss";
+
+/* ============================================================
+   HIGHCORTISOL.XYZ — biometric OS design tokens
+   Ported 1:1 from highcortisol-xyz.html. Tokens are driven by
+   data-theme (dark|light) and data-mode (low|high) on <html>.
+   ============================================================ */
+
+:root {
+  /* fonts (next/font injects the actual faces) */
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  /* ---- DARK base (default) ---- */
+  --bg: #08080a;
+  --surface: #131317;
+  --surface-2: #1c1c21;
+  --fg: #f4f4f5;
+  --muted: #8e8e98;
+  --border: #23232a;
+  --grid-line: rgba(255, 255, 255, 0.05);
+  --low-bg: rgba(46, 180, 110, 0.1);
+  --low-text: #5fd699;
+  --low-border: rgba(46, 180, 110, 0.34);
+  --high-bg: rgba(229, 72, 77, 0.11);
+  --high-text: #ff8b8b;
+  --high-border: rgba(229, 72, 77, 0.36);
+  --blink: #ff4d4d;
+  --core-invert: 1;
+  --core-op: 0.55;
+  --core-blend: screen;
+
+  /* ---- LOW mode defaults (theme-independent) ---- */
+  --pad-section: 132px;
+  --gap-row: 28px;
+  --veil: 0;
+  --glitch: 0;
+  --ease: cubic-bezier(0.4, 0.05, 0.2, 1);
+  --dur: 0.5s;
+  --tick-dur: 26s;
+  --bpm-dur: 0.95s;
+  --scan-dur: 6s;
+  --grid-dur: 26s;
+  --core-hue: 78deg;
+
+  /* ---- accent (dark + low) ---- */
+  --accent: #21a35c;
+  --accent-fg: #04130a;
+  --accent-text: #5fd699;
+}
+
+/* ---- LIGHT base ---- */
+:root[data-theme="light"] {
+  --bg: #fafafb;
+  --surface: #ffffff;
+  --surface-2: #f1f1f4;
+  --fg: #0c0c0e;
+  --muted: #65656e;
+  --border: #e4e4e9;
+  --grid-line: rgba(0, 0, 0, 0.05);
+  --low-bg: #e7f4ec;
+  --low-text: #137a3a;
+  --low-border: #c8e6d3;
+  --high-bg: #fdeaea;
+  --high-text: #c41b1b;
+  --high-border: #f3cfcf;
+  --blink: #e0241f;
+  --core-invert: 0;
+  --core-op: 0.42;
+  --core-blend: multiply;
+}
+
+/* ---- HIGH mode (theme-independent timings) ---- */
+:root[data-mode="high"] {
+  --pad-section: 72px;
+  --gap-row: 16px;
+  --veil: 1;
+  --glitch: 1;
+  --ease: cubic-bezier(0.2, 0.9, 0.25, 1);
+  --dur: 0.18s;
+  --tick-dur: 9s;
+  --bpm-dur: 0.43s;
+  --scan-dur: 2.4s;
+  --grid-dur: 9s;
+  --core-hue: 320deg;
+}
+
+/* ---- accent: four theme×mode combos ---- */
+:root[data-mode="high"]:not([data-theme="light"]) {
+  --accent: #e5484d;
+  --accent-fg: #1a0606;
+  --accent-text: #ff8b8b;
+}
+:root[data-theme="light"] {
+  --accent: #15803d;
+  --accent-fg: #ffffff;
+  --accent-text: #137a3a;
+}
+:root[data-theme="light"][data-mode="high"] {
+  --accent: #dc2626;
+  --accent-fg: #ffffff;
+  --accent-text: #c41b1b;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* skip link */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  padding: 12px 18px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  transform: translateY(-130%);
+  transition: transform 0.2s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   Keyframes (verbatim from the mockup)
+   ============================================================ */
+@keyframes ccpulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(0.55); }
+}
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  12% { transform: scale(1.5); }
+  24% { transform: scale(1); }
+  36% { transform: scale(1.28); }
+}
+@keyframes gridDrift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 -52px, -52px 0; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes scan {
+  0% { transform: translateY(-10%); }
+  100% { transform: translateY(1100%); }
+}
+@keyframes caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes auroraShift {
+  0%, 100% { transform: translate(-4%, -2%) scale(1); }
+  50% { transform: translate(4%, 3%) scale(1.12); }
+}
+@keyframes coreFloat {
+  0%, 100% { transform: translate(-50%, -50%) translateY(-16px); }
+  50% { transform: translate(-50%, -50%) translateY(16px); }
+}
+@keyframes rgbsplit {
+  0%, 100% {
+    text-shadow: calc(var(--glitch, 0) * -2.5px) 0 #ff2d4d,
+      calc(var(--glitch, 0) * 2.5px) 0 #00e0ff;
+  }
+  50% {
+    text-shadow: calc(var(--glitch, 0) * 2.5px) 0 #ff2d4d,
+      calc(var(--glitch, 0) * -2.5px) 0 #00e0ff;
+  }
+}
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(54px) scale(0.975); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes flickIn {
+  0% { opacity: 0; }
+  10% { opacity: 0.6; }
+  12% { opacity: 0.1; }
+  30% { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+
+/* scroll-driven reveal (no JS); ignored where unsupported → content visible */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    animation: revealUp cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-timeline: view();
+    animation-range: entry 4% cover 32%;
+  }
+}
+
+/* ============================================================
+   Interaction utilities (replace the mockup's style-hover attrs)
+   ============================================================ */
+.btn-primary {
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px -10px var(--accent);
+}
+.btn-ghost {
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+.hov-surface {
+  transition: background var(--dur) var(--ease);
+}
+.hov-surface:hover {
+  background: var(--surface);
+}
+.hov-surface2 {
+  transition: background var(--dur) var(--ease);
+}
+.hov-surface2:hover {
+  background: var(--surface-2);
+}
+
+.squad-link {
+  transition: transform var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.squad-link:hover {
+  transform: translateX(6px);
+}
+.squad-link.low:hover { color: var(--low-text); }
+.squad-link.high:hover { color: var(--high-text); }
+
+.proj-row {
+  transition: background var(--dur) var(--ease);
+}
+.proj-row:hover {
+  background: var(--surface);
+}
+.data-bar {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--dur) var(--ease);
+}
+.proj-row:hover .data-bar {
+  transform: scaleY(1);
+}
+.link-live:hover { opacity: 0.65; }
+.link-code:hover { color: var(--accent-text); }
+
+/* ============================================================
+   Reduced motion — calm fallback for the whole glitch/terminal UI
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
