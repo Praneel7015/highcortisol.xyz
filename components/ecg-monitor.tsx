@@ -50,7 +50,9 @@ export function EcgMonitor() {
       if (w && (cvs.width !== w || cvs.height !== h)) {
         cvs.width = w;
         cvs.height = h;
+        return true;
       }
+      return false;
     };
 
     const drawWave = (cvs: HTMLCanvasElement, time: number) => {
@@ -189,10 +191,20 @@ export function EcgMonitor() {
     raf.current = requestAnimationFrame(loop);
     const onResize = () => drawRef.current(performance.now());
     window.addEventListener("resize", onResize);
+
+    // fire a draw as soon as the canvas has real pixel dimensions (fixes blank
+    // canvas on first render when getBoundingClientRect is still 0)
+    let ro: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== "undefined" && waveRef.current) {
+      ro = new ResizeObserver(() => drawRef.current(performance.now()));
+      ro.observe(waveRef.current);
+    }
+
     return () => {
       if (raf.current) cancelAnimationFrame(raf.current);
       raf.current = null;
       window.removeEventListener("resize", onResize);
+      ro?.disconnect();
     };
   }, []);
 

@@ -39,25 +39,64 @@ export function Background() {
           transition: "opacity 0.6s ease",
         }}
       />
-      {/* floating neural core */}
+      {/* floating neural core — outer glow */}
       <div
         aria-hidden="true"
         style={{
           position: "fixed",
-          top: "48%",
-          left: "50%",
+          top: "46%",
+          left: "58%",
           zIndex: 0,
           pointerEvents: "none",
-          width: "min(70vw, 720px)",
+          width: "min(80vw, 820px)",
           aspectRatio: "1 / 1",
           transform: "translate(-50%, -50%)",
           animation: "coreFloat 9s ease-in-out infinite",
-          opacity: "var(--core-op)",
+          opacity: "calc(var(--core-op) * 0.9)",
           mixBlendMode: "var(--core-blend)" as React.CSSProperties["mixBlendMode"],
           background:
-            "radial-gradient(circle at 50% 46%, color-mix(in srgb, var(--accent-text) 42%, transparent) 0%, color-mix(in srgb, var(--accent) 18%, transparent) 34%, transparent 60%), radial-gradient(circle at 50% 50%, transparent 48%, color-mix(in srgb, var(--accent) 22%, transparent) 50%, transparent 58%)",
-          filter:
-            "blur(26px) saturate(1.5) hue-rotate(calc(var(--core-hue) - 78deg))",
+            "radial-gradient(circle at 50% 46%, color-mix(in srgb, var(--accent-text) 55%, transparent) 0%, color-mix(in srgb, var(--accent) 28%, transparent) 30%, color-mix(in srgb, var(--accent) 10%, transparent) 55%, transparent 70%)",
+          filter: "blur(32px) saturate(1.8) hue-rotate(calc(var(--core-hue) - 78deg))",
+        }}
+      />
+      {/* neural core — inner bright nucleus */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          top: "46%",
+          left: "58%",
+          zIndex: 0,
+          pointerEvents: "none",
+          width: "min(36vw, 380px)",
+          aspectRatio: "1 / 1",
+          transform: "translate(-50%, -50%)",
+          animation: "coreFloat 9s ease-in-out infinite 1.5s",
+          opacity: "calc(var(--core-op) * 1.2)",
+          mixBlendMode: "var(--core-blend)" as React.CSSProperties["mixBlendMode"],
+          background:
+            "radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent-text) 70%, transparent) 0%, color-mix(in srgb, var(--accent-text) 30%, transparent) 40%, transparent 70%)",
+          filter: "blur(16px) saturate(2)",
+        }}
+      />
+      {/* neural core — concentric ring */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          top: "46%",
+          left: "58%",
+          zIndex: 0,
+          pointerEvents: "none",
+          width: "min(56vw, 580px)",
+          aspectRatio: "1 / 1",
+          transform: "translate(-50%, -50%)",
+          animation: "coreFloat 12s ease-in-out infinite reverse",
+          opacity: "calc(var(--core-op) * 0.6)",
+          mixBlendMode: "var(--core-blend)" as React.CSSProperties["mixBlendMode"],
+          background:
+            "radial-gradient(circle at 50% 50%, transparent 44%, color-mix(in srgb, var(--accent) 40%, transparent) 48%, color-mix(in srgb, var(--accent) 15%, transparent) 54%, transparent 60%)",
+          filter: "blur(8px)",
         }}
       />
       {/* CRT scanlines */}

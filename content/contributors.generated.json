@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-06-16T12:48:30.469Z",
+  "generatedAt": "2026-06-16T13:46:22.047Z",
   "source": "github-api (anon)",
   "count": 5,
   "contributors": [
     {
       "login": "Praneel7015",
-      "name": "Praneel7015",
+      "name": "Praneel",
       "handle": "Praneel7015",
       "avatarUrl": "https://avatars.githubusercontent.com/u/71339092?v=4",
       "htmlUrl": "https://github.com/Praneel7015",
@@ -51,7 +51,7 @@
     },
     {
       "login": "thotaDeepika",
-      "name": "thotaDeepika",
+      "name": "Deepika T",
       "handle": "thotaDeepika",
       "avatarUrl": "https://avatars.githubusercontent.com/u/233524360?v=4",
       "htmlUrl": "https://github.com/thotaDeepika",
@@ -60,14 +60,14 @@
         "namma-city"
       ],
       "squad": "low",
-      "initials": "TH"
+      "initials": "DT"
     },
     {
       "login": "nikhil-yn-aix",
-      "name": "nikhil-yn-aix",
+      "name": "Nikhil Y N",
       "handle": "nikhil-yn-aix",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/192443240?v=4",
-      "htmlUrl": "https://github.com/NikByteSized",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/98247758?v=4",
+      "htmlUrl": "https://github.com/nikhil-yn-aix",
       "contributions": 2,
       "projects": [
         "auralis"
