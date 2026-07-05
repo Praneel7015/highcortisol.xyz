@@ -67,7 +67,7 @@ export function SiteFooter() {
         >
           <span>calm and intense, shipped on the lawn.</span>
           <ThemeToggle />
-          <span>© 2026 · APR—JUN</span>
+          <span>© 2026 · APR—JUL</span>
         </div>
       </div>
     </footer>

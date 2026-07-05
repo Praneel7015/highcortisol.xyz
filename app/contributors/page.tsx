@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 export default function ContributorsPage() {
   const contributors = getContributors();
   const meta = getContributorsMeta();
-  const low = contributors.filter((c) => c.squad === "low" || c.squad === "both");
-  const high = contributors.filter((c) => c.squad === "high" || c.squad === "both");
+  const low = contributors.filter((c) => c.squad === "low");
+  const high = contributors.filter((c) => c.squad === "high");
 
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: "clamp(56px, 8vw, 100px) clamp(18px, 4vw, 32px)" }}>

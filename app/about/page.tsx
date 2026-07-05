@@ -24,17 +24,22 @@ const TIMELINE = [
   {
     month: "MAY",
     label: "Both squads warm",
-    body: "Three more projects dropped across both squads. The biometric metaphor locked in — low BPM for slow and steady, 180+ BPM for the overnight hauls.",
+    body: "Four more projects dropped across both squads. The biometric metaphor locked in — low BPM for slow and steady, 180+ BPM for the overnight hauls.",
   },
   {
     month: "JUN",
     label: "Shipping daily",
-    body: "Two more builds. The portfolio site itself became a project. We rendered the whole thing as a biometric OS because that felt more honest than a grid of logos.",
+    body: "One more build, and the portfolio site itself became a project. We rendered the whole thing as a biometric OS because that felt more honest than a grid of logos.",
+  },
+  {
+    month: "JUL",
+    label: "Still climbing",
+    body: "One more build, no sign of slowing down. The lawn got a little bigger.",
   },
   {
     month: "NOW",
     label: "Still on the lawn",
-    body: "Seven builds shipped. Five contributors. The next hackathon is already on the calendar.",
+    body: "Nine builds shipped. Seven contributors. The next hackathon is already on the calendar.",
   },
 ];
 

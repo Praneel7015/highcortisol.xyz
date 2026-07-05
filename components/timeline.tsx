@@ -1,7 +1,8 @@
 const MONTHS = [
-  { label: "APRIL", note: "2 builds · the split begins" },
-  { label: "MAY", note: "3 builds · both squads warm" },
-  { label: "JUNE", note: "2 builds · shipping daily" },
+  { label: "APRIL", note: "3 builds · the split begins" },
+  { label: "MAY", note: "4 builds · both squads warm" },
+  { label: "JUNE", note: "1 build · shipping daily" },
+  { label: "JULY", note: "1 build · still climbing" },
   { label: "NOW", note: "still on the lawn" },
 ];
 

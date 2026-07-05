@@ -3,7 +3,7 @@ export const SITE = {
   shortName: "highcortisol",
   title: "highcortisol.xyz — two squads, one hormone",
   description:
-    "A hackathon collective rendered as a biometric OS. Low Cortisol ships calm, High Cortisol ships intense. Seven builds, two nervous systems, one lawn.",
+    "A hackathon collective rendered as a biometric OS. Low Cortisol ships calm, High Cortisol ships intense. Nine builds, two nervous systems, one lawn.",
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://highcortisol.xyz").replace(
     /\/$/,
     "",
@@ -11,7 +11,7 @@ export const SITE = {
   org: "https://github.com/LowCortisol-Projects",
   email: "hi@highcortisol.xyz",
   locale: "en_US",
-  period: "APR—JUN 2026",
+  period: "APR—JUL 2026",
 } as const;
 
 export function abs(path = "/"): string {

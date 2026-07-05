@@ -21,7 +21,7 @@ export const ProjectFrontmatter = z.object({
   title: z.string().min(1),
   slug: z.string().min(1),
   squad: z.enum(["low", "high"]),
-  month: z.enum(["APR", "MAY", "JUN"]),
+  month: z.enum(["APR", "MAY", "JUN", "JUL"]),
   order: z.number(),
   summary: z.string().min(1),
   repoUrl: urlish,
@@ -32,7 +32,7 @@ export const ProjectFrontmatter = z.object({
 });
 
 export type Squad = "low" | "high";
-export type Month = "APR" | "MAY" | "JUN";
+export type Month = "APR" | "MAY" | "JUN" | "JUL";
 export type ProjectMeta = z.infer<typeof ProjectFrontmatter> & { bpm: number };
 export type ProjectWithBody = ProjectMeta & { body: string };
 

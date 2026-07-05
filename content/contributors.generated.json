@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-06-16T13:46:22.047Z",
+  "generatedAt": "2026-07-05T03:13:10.989Z",
   "source": "github-api (anon)",
-  "count": 5,
+  "count": 7,
   "contributors": [
     {
       "login": "Praneel7015",
@@ -9,11 +9,13 @@
       "handle": "Praneel7015",
       "avatarUrl": "https://avatars.githubusercontent.com/u/71339092?v=4",
       "htmlUrl": "https://github.com/Praneel7015",
-      "contributions": 80,
+      "contributions": 111,
       "projects": [
         "auralis",
+        "dinner-kaha",
         "flowforge",
         "future-you-mirror",
+        "ghatwise",
         "namma-city",
         "sankalp-learning",
         "sanmargaha"
@@ -72,8 +74,34 @@
       "projects": [
         "auralis"
       ],
-      "squad": "low",
+      "squad": "high",
       "initials": "NY"
+    },
+    {
+      "login": "ChrompyCoder",
+      "name": "Sanjay Jaganur",
+      "handle": "ChrompyCoder",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/153909062?v=4",
+      "htmlUrl": "https://github.com/ChrompyCoder",
+      "contributions": 0,
+      "projects": [
+        "sankalp-learning"
+      ],
+      "squad": "high",
+      "initials": "SJ"
+    },
+    {
+      "login": "Utkarsh-patel26",
+      "name": "utkarsh patel",
+      "handle": "Utkarsh-patel26",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/153971829?v=4",
+      "htmlUrl": "https://github.com/Utkarsh-patel26",
+      "contributions": 0,
+      "projects": [
+        "sankalp-learning"
+      ],
+      "squad": "high",
+      "initials": "UP"
     }
   ]
 }

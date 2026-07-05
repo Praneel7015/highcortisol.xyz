@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { Background } from "@/components/background";
-import { BootScreenLazy } from "@/components/boot-screen-lazy";
 import { VitalsInit } from "@/components/vitals-init";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -84,7 +83,6 @@ export default function RootLayout({
           skip to content
         </a>
         <Background />
-        <BootScreenLazy />
         <VitalsInit />
         <div style={{ position: "relative", zIndex: 2 }}>
           <SiteHeader />

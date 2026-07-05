@@ -12,6 +12,9 @@ export type Mode = "low" | "high";
 export type Theme = "dark" | "light";
 
 let mode: Mode = "low";
+// The user's manually-selected mode. `mode` (above) is what's actually shown —
+// it can be temporarily overridden by an involuntary cortisol spike below.
+let baseMode: Mode = "low";
 let theme: Theme = "dark";
 let reduce = false;
 let bpm = 58;
@@ -61,6 +64,46 @@ function stopInterval() {
   }
 }
 
+// Involuntary spike: every so often the whole site jolts into HIGH CORTISOL
+// for a few seconds, then settles back — independent of the manual toggle.
+const SPIKE_MIN_DELAY = 30_000;
+const SPIKE_MAX_DELAY = 55_000;
+const SPIKE_DURATION = 5_000;
+
+let spikeScheduleTimer: ReturnType<typeof setTimeout> | null = null;
+let spikeRevertTimer: ReturnType<typeof setTimeout> | null = null;
+
+function scheduleSpike() {
+  if (spikeScheduleTimer) clearTimeout(spikeScheduleTimer);
+  const delay = SPIKE_MIN_DELAY + Math.random() * (SPIKE_MAX_DELAY - SPIKE_MIN_DELAY);
+  spikeScheduleTimer = setTimeout(runSpike, delay);
+}
+
+function runSpike() {
+  spikeScheduleTimer = null;
+  // nothing to spike to — already high, or motion is reduced. try again later.
+  if (reduce || baseMode === "high") {
+    scheduleSpike();
+    return;
+  }
+  mode = "high";
+  try {
+    document.documentElement.dataset.mode = mode;
+  } catch {}
+  setBase();
+  emit();
+  spikeRevertTimer = setTimeout(() => {
+    spikeRevertTimer = null;
+    mode = baseMode;
+    try {
+      document.documentElement.dataset.mode = mode;
+    } catch {}
+    setBase();
+    emit();
+    scheduleSpike();
+  }, SPIKE_DURATION);
+}
+
 export function initVitals() {
   if (started) return;
   started = true;
@@ -71,8 +114,20 @@ export function initVitals() {
     reduce = mq.matches;
     mq.addEventListener("change", (e) => {
       reduce = e.matches;
-      if (reduce) stopInterval();
-      else startInterval();
+      if (reduce) {
+        stopInterval();
+        if (spikeRevertTimer) {
+          clearTimeout(spikeRevertTimer);
+          spikeRevertTimer = null;
+          mode = baseMode;
+          try {
+            document.documentElement.dataset.mode = mode;
+          } catch {}
+          setBase();
+        }
+      } else {
+        startInterval();
+      }
       emit();
     });
   } catch {}
@@ -94,17 +149,27 @@ export function initVitals() {
   el.dataset.mode = mode;
   setBase();
   startInterval();
+  scheduleSpike();
   emit();
 }
 
 export function setMode(next: Mode) {
-  if (next === mode) return;
-  mode = next;
-  try {
-    document.documentElement.dataset.mode = mode;
-  } catch {}
-  setBase();
-  emit();
+  baseMode = next;
+  // a manual pick always wins immediately over an in-progress involuntary spike
+  const wasSpiking = spikeRevertTimer !== null;
+  if (wasSpiking) {
+    clearTimeout(spikeRevertTimer!);
+    spikeRevertTimer = null;
+  }
+  if (next !== mode) {
+    mode = next;
+    try {
+      document.documentElement.dataset.mode = mode;
+    } catch {}
+    setBase();
+    emit();
+  }
+  if (wasSpiking) scheduleSpike();
 }
 
 export function setTheme(next: Theme) {

@@ -75,7 +75,7 @@ export default function OgImage() {
         {/* Main content */}
         <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 12 }}>
           <div style={{ fontSize: 13, letterSpacing: "0.1em", color: "#5fd699", display: "flex" }}>
-            BIOMETRIC OS · APR—JUN 2026
+            BIOMETRIC OS · APR—JUL 2026
           </div>
           <div
             style={{
@@ -101,7 +101,7 @@ export default function OgImage() {
               display: "flex",
             }}
           >
-            Two squads, one hormone. 7 builds, two nervous systems, one lawn.
+            Two squads, one hormone. 9 builds, two nervous systems, one lawn.
           </div>
           <div style={{ display: "flex", gap: 16, marginTop: 12 }}>
             <span
