@@ -20,11 +20,9 @@ export function Counter({
     const el = ref.current;
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      setDisplay(value);
-      return;
-    }
-    setDisplay(0);
+    // reset on the next frame, not synchronously inside the effect
+    const reset = requestAnimationFrame(() => setDisplay(reduce ? value : 0));
+    if (reduce) return () => cancelAnimationFrame(reset);
 
     const run = () => {
       if (ran.current) return;
@@ -52,7 +50,10 @@ export function Counter({
       { threshold: 0.5 },
     );
     io.observe(el);
-    return () => io.disconnect();
+    return () => {
+      cancelAnimationFrame(reset);
+      io.disconnect();
+    };
   }, [value]);
 
   return (

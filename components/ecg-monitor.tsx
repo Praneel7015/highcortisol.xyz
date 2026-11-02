@@ -29,8 +29,10 @@ export function EcgMonitor() {
   const modeRef = useRef(mode);
   const reduceRef = useRef(reduce);
   const colors = useRef({ line: "#5fd699", grid: "#23232a" });
-  modeRef.current = mode;
-  reduceRef.current = reduce;
+  useEffect(() => {
+    modeRef.current = mode;
+    reduceRef.current = reduce;
+  }, [mode, reduce]);
 
   // refresh canvas colors from the live CSS tokens whenever theme/mode flips
   useEffect(() => {

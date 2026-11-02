@@ -1,0 +1,54 @@
+language: en-US
+
+reviews:
+  profile: chill
+  high_level_summary: true
+  poem: false
+  review_status: true
+  path_filters:
+    - "!**/package-lock.json"
+    - "!.next/**"
+    - "!content/contributors.generated.json"
+  path_instructions:
+    - path: "content/projects/*.mdx"
+      instructions: |
+        One project per file. Frontmatter is validated by Zod in
+        lib/projects.ts. Check the slug matches the filename, the month is
+        in the MONTHS list, repoUrl/liveUrl are real http(s) URLs, and the
+        write-up keeps the lowercase voice with a VITALS list at the end.
+        Flag bold or italic markers that are split across a line break.
+    - path: "{app,components}/**/*.tsx"
+      instructions: |
+        Next.js 16 App Router with React 19. Read node_modules/next/dist/docs
+        before assuming an API; this version has breaking changes. Flag
+        client components that could stay server components, refs read or
+        written during render, synchronous setState inside effects, and
+        counts or dates that are hardcoded when they can be derived from
+        content/.
+    - path: "scripts/**/*.mjs"
+      instructions: |
+        Build-time GitHub fetches. They must never fail the build: on error,
+        keep the committed JSON. Never log the token.
+  pre_merge_checks:
+    # The 80% docstring target is CodeRabbit's default, not a repo rule.
+    docstrings:
+      mode: "off"
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - "^master$"
+  tools:
+    eslint:
+      enabled: true
+    gitleaks:
+      enabled: true
+    actionlint:
+      enabled: true
+    yamllint:
+      enabled: true
+    markdownlint:
+      enabled: true
+
+chat:
+  auto_reply: true
