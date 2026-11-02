@@ -24,7 +24,10 @@ export const metadata: Metadata = {
   title: { default: SITE.title, template: "%s — highcortisol.xyz" },
   description: SITE.description,
   applicationName: SITE.name,
-  authors: [{ name: "LowCortisol-Projects", url: SITE.org }],
+  authors: [
+    { name: "LowCortisol-Projects", url: SITE.org },
+    { name: "Praneel S", url: SITE.profile },
+  ],
   creator: "LowCortisol-Projects",
   keywords: [
     "highcortisol",

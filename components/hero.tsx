@@ -1,4 +1,5 @@
 import { SITE } from "@/lib/site";
+import { getAllProjects } from "@/lib/projects";
 import { EcgMonitorLazy } from "@/components/ecg-monitor-lazy";
 import { Scramble } from "@/components/scramble";
 import { Counter } from "@/components/counter";
@@ -196,7 +197,7 @@ export function Hero() {
               <div className="mono" style={readoutLabel}>
                 BUILDS
               </div>
-              <Counter value={7} className="mono" style={readoutValue} />
+              <Counter value={getAllProjects().length} className="mono" style={readoutValue} />
             </div>
           </div>
         </div>

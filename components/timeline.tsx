@@ -1,12 +1,30 @@
-const MONTHS = [
-  { label: "APRIL", note: "3 builds · the split begins" },
-  { label: "MAY", note: "4 builds · both squads warm" },
-  { label: "JUNE", note: "1 build · shipping daily" },
-  { label: "JULY", note: "1 build · still climbing" },
-  { label: "NOW", note: "still on the lawn" },
-];
+import { getAllProjects, MONTHS, type Month } from "@/lib/projects";
+
+const MONTH_COPY: Record<Month, { label: string; note: string }> = {
+  APR: { label: "APRIL", note: "the split begins" },
+  MAY: { label: "MAY", note: "both squads warm" },
+  JUN: { label: "JUNE", note: "shipping daily" },
+  JUL: { label: "JULY", note: "the weekend challenges" },
+  AUG: { label: "AUGUST", note: "hackathon season" },
+  SEP: { label: "SEPTEMBER", note: "agents everywhere" },
+  OCT: { label: "OCTOBER", note: "still climbing" },
+  NOV: { label: "NOVEMBER", note: "still climbing" },
+};
+
+/** One row per month that actually shipped something, counted from content/. */
+function timelineRows() {
+  const projects = getAllProjects();
+  const rows = MONTHS.flatMap((m) => {
+    const n = projects.filter((p) => p.month === m).length;
+    if (!n) return [];
+    const { label, note } = MONTH_COPY[m];
+    return [{ label, note: `${n} build${n === 1 ? "" : "s"} · ${note}` }];
+  });
+  return [...rows, { label: "NOW", note: "still on the lawn" }];
+}
 
 export function Timeline() {
+  const rows = timelineRows();
   return (
     <section
       id="team"
@@ -68,7 +86,7 @@ export function Timeline() {
             <span style={{ color: "var(--low-text)" }}>Low Cortisol</span> takes
             the long, calm builds;{" "}
             <span style={{ color: "var(--high-text)" }}>High Cortisol</span> takes
-            the 24-hour sprints. Four months in, the split is the whole point.
+            the 24-hour sprints. Seven months in, the split is the whole point.
           </p>
           <div
             style={{
@@ -79,7 +97,7 @@ export function Timeline() {
               border: "1px solid var(--border)",
             }}
           >
-            {MONTHS.map((m) => (
+            {rows.map((m) => (
               <div
                 key={m.label}
                 className="hov-surface2"

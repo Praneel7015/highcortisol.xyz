@@ -1,8 +1,11 @@
+import { getAllProjects } from "@/lib/projects";
+import { SITE } from "@/lib/site";
+
 const WORDS = [
   "LOW CORTISOL // CALM BUILDS",
   "HIGH CORTISOL // INTENSE SHIPS",
-  "9 PROJECTS",
-  "APR—JUL 2026",
+  `${getAllProjects().length} PROJECTS`,
+  SITE.period,
   "MERGE FAST · REVIEW FASTER",
   "ON THE LAWN",
 ];

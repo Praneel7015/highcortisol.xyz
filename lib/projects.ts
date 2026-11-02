@@ -17,11 +17,14 @@ const ContributorsOverride = z
   })
   .optional();
 
+/** Build months, in calendar order. Drives the timeline and the month chips. */
+export const MONTHS = ["APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV"] as const;
+
 export const ProjectFrontmatter = z.object({
   title: z.string().min(1),
   slug: z.string().min(1),
   squad: z.enum(["low", "high"]),
-  month: z.enum(["APR", "MAY", "JUN", "JUL"]),
+  month: z.enum(MONTHS),
   order: z.number(),
   summary: z.string().min(1),
   repoUrl: urlish,
@@ -32,7 +35,7 @@ export const ProjectFrontmatter = z.object({
 });
 
 export type Squad = "low" | "high";
-export type Month = "APR" | "MAY" | "JUN" | "JUL";
+export type Month = (typeof MONTHS)[number];
 export type ProjectMeta = z.infer<typeof ProjectFrontmatter> & { bpm: number };
 export type ProjectWithBody = ProjectMeta & { body: string };
 
