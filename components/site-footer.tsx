@@ -49,7 +49,16 @@ export function SiteFooter() {
             className="btn-ghost"
             style={linkStyle}
           >
-            GITHUB ↗
+            ORG ↗
+          </a>
+          <a
+            href={SITE.profile}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-ghost"
+            style={linkStyle}
+          >
+            @PRANEEL7015 ↗
           </a>
         </nav>
 
@@ -67,7 +76,7 @@ export function SiteFooter() {
         >
           <span>calm and intense, shipped on the lawn.</span>
           <ThemeToggle />
-          <span>© 2026 · APR—JUL</span>
+          <span>© 2026 · APR—NOV</span>
         </div>
       </div>
     </footer>

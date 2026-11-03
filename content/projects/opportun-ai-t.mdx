@@ -1,0 +1,28 @@
+---
+title: "opportun-ai-t"
+slug: "opportun-ai-t"
+squad: "low"
+month: "JUL"
+order: 11
+summary: "An autonomous career agent that reads the job boards every morning so you don't have to."
+repoUrl: "https://github.com/Praneel7015/Opportun-AI-t"
+liveUrl: "https://main.dy5jhx1jn3iz3.amplifyapp.com"
+bpm: 56
+tags: ["agents", "careers", "aws", "bedrock"]
+---
+
+opportun-ai-t is a single-user career agent. at 08:00 IST an eventbridge
+schedule wakes a lambda, bedrock nova scores the day's jobs against your
+profile, dynamodb keeps the results, ses mails you a briefing, and a next.js
+control center shows what the agent did and why.
+
+built for the aws builder center **weekend agent challenge**. it's
+**low cortisol** because the agent does the refreshing for you. you read one email
+over coffee and close the tab.
+
+## VITALS
+
+- **squad** — low cortisol // calm builds
+- **built for** — aws builder center · weekend agent challenge
+- **cadence** — one briefing a day, 08:00 ist
+- **stack** — eventbridge → lambda → bedrock nova → dynamodb + ses

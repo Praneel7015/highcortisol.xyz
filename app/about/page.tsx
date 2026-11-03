@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
+import { getAllProjects } from "@/lib/projects";
+import contributors from "@/content/contributors.generated.json";
 
 export const metadata: Metadata = {
   title: "About",
@@ -14,6 +16,9 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
+const PROJECTS = getAllProjects();
+const builds = (month: string) => PROJECTS.filter((p) => p.month === month).length;
 
 const TIMELINE = [
   {
@@ -34,12 +39,22 @@ const TIMELINE = [
   {
     month: "JUL",
     label: "Still climbing",
-    body: "One more build, no sign of slowing down. The lawn got a little bigger.",
+    body: "Ghatwise, then the AWS Builder Center weekend challenges: a study coach, a career agent, a home-admin digest, and an anomaly detector for a hackathon pitch.",
+  },
+  {
+    month: "AUG",
+    label: "Hackathon season",
+    body: `${builds("AUG")} builds in one month. A night-city racer, a 3D dream site, multi-agent support on CockroachDB, a real estate lead agent, and a revenue recovery agent for the Razorpay buildathon.`,
+  },
+  {
+    month: "SEP",
+    label: "Agents everywhere",
+    body: "Agents that read bank SMS, plain-English contracts, and a job-hunt inbox. Then October went to hardening the old builds: flowforge got its own subdomain and a full CodeRabbit pass.",
   },
   {
     month: "NOW",
     label: "Still on the lawn",
-    body: "Nine builds shipped. Seven contributors. The next hackathon is already on the calendar.",
+    body: `${PROJECTS.length} builds shipped. ${contributors.count} contributors. The next hackathon is already on the calendar.`,
   },
 ];
 
@@ -77,7 +92,7 @@ export default function AboutPage() {
           <span style={{ color: "var(--low-text)" }}>Low Cortisol</span> takes
           the long, calm builds.{" "}
           <span style={{ color: "var(--high-text)" }}>High Cortisol</span> takes
-          the 24-hour sprints. Four months in, the split is the whole point.
+          the 24-hour sprints. Seven months in, the split is the whole point.
         </p>
       </header>
 

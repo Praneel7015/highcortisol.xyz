@@ -5,14 +5,14 @@ squad: "high"
 month: "MAY"
 order: 1
 summary: "AI-powered low-code platform that builds and ships CI/CD pipelines straight from a prompt."
-liveUrl: "https://flowforge-ten.vercel.app"
+liveUrl: "https://flowforge.highcortisol.xyz"
 repoUrl: "https://github.com/Praneel7015/flowforge"
 bpm: 188
 tags: ["ai", "ci/cd", "low-code"]
 ---
 
 flowforge reads a sentence and ships a pipeline. you describe the build you
-want — _"lint, test, containerize, deploy to staging on green"_ — and it
+want — "lint, test, containerize, deploy to staging on green" — and it
 assembles the CI/CD graph, wires the secrets, and opens the pull request. no
 YAML archaeology, no copy-pasting someone else's `.github/workflows`.
 
@@ -20,8 +20,15 @@ this is **high cortisol** work. the deadline was the demo, the demo was in an
 hour, and the pitch was: _what if the boring part of shipping took a prompt
 instead of an afternoon?_ it turns out the boring part is most of the part.
 
+in october it came back for a second pass and moved to its own subdomain on
+this site. it gained a bidirectional dag compiler, groq as the default model,
+and vertex ai, bedrock and openai-compatible providers. ci, codeql, dependabot
+and coderabbit are now wired in, and a full coderabbit audit closed 28 findings
+across more than thirty merged prs.
+
 ## VITALS
 
 - **squad** — high cortisol // intense ships
-- **state** — live, deployed, spiking
+- **state** — live at flowforge.highcortisol.xyz, still spiking
 - **stack** — prompt → pipeline graph → real runners
+- **providers** — groq, vertex ai, bedrock, openai-compatible

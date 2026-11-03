@@ -1,0 +1,26 @@
+---
+title: "memora"
+slug: "memora"
+squad: "high"
+month: "AUG"
+order: 14
+summary: "Multi-agent SaaS support that remembers every past ticket, with CockroachDB as the shared memory."
+repoUrl: "https://github.com/Praneel7015/memora"
+bpm: 170
+tags: ["agents", "support", "cockroachdb", "aws"]
+---
+
+memora is a support desk run by agents that don't forget. each agent pulls
+prior chats from sql and distributed vectors, triages in parallel, and answers
+with the context it found. tickets, messages, embeddings and agent traces all
+live in one cockroachdb cluster on aws, so the memory survives the agents.
+
+built for the **cockroachdb × aws hackathon**. **high cortisol**: parallel
+agents, a live support queue, and a submission window that closed on august 18.
+
+## VITALS
+
+- **squad** — high cortisol // intense ships
+- **built for** — cockroachdb × aws hackathon
+- **memory** — sql + distributed vectors, one cluster
+- **stack** — bedrock + lambda/ecs + s3 + cockroachdb

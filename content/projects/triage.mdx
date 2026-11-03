@@ -1,0 +1,29 @@
+---
+title: "triage"
+slug: "triage"
+squad: "high"
+month: "AUG"
+order: 18
+summary: "A recovery agent for failed Indian Autopay payments that recovers revenue without breaking the rules."
+repoUrl: "https://github.com/Praneel7015/triage-recovery-agent"
+bpm: 178
+tags: ["fintech", "agents", "razorpay", "payments"]
+---
+
+the same `payment.failed` event can mean four different things. triage works
+out which one before it acts. insufficient funds gets a quiet retry after
+payday, a bank outage gets nothing, a revoked mandate gets one payment link,
+and a cancellation is left alone. a policy graph picks the action, stop rules
+veto it, and the llm only writes the copy. it never moves money.
+
+built for the **razorpay ai buildathon 2026**, track 03: ai revenue recovery.
+on the 168-case batch, naive dunning recovers more rupees but breaks 157 rules.
+triage breaks zero, and every rupee it recovers can be booked. **high cortisol**:
+a buildathon deadline, live razorpay payment links, and webhooks on ngrok.
+
+## VITALS
+
+- **squad** — high cortisol // intense ships
+- **built for** — razorpay ai buildathon 2026 · track 03
+- **eval** — 168 cases, 15 compliance invariants, 0 rule breaks
+- **live path** — payment link → checkout.js → webhook closes the case

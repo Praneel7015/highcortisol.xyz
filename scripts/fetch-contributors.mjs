@@ -26,7 +26,7 @@ const ALIAS = {
 };
 
 // Never surface these (bots, automation). Logins ending in [bot] are auto-dropped.
-const GLOBAL_EXCLUDE = new Set(["actions-user", "dependabot", "web-flow"]);
+const GLOBAL_EXCLUDE = new Set(["actions-user", "cursoragent", "dependabot", "web-flow"]);
 
 const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || "";
 const HEADERS = {

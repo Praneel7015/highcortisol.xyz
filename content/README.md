@@ -16,7 +16,7 @@ build will **fail loudly** if a file is malformed — that's intentional.
 title: "flowforge"                 # display name (we render it lowercase)
 slug: "flowforge"                  # URL slug; must match the filename
 squad: "high"                      # "low" | "high"  → green | red
-month: "MAY"                       # "APR" | "MAY" | "JUN"  (drives ordering + timeline)
+month: "MAY"                       # "APR" … "NOV"  (drives the timeline; see MONTHS in lib/projects.ts)
 order: 1                           # sort order within the list
 summary: "One-line description shown on cards and in the squad split."
 repoUrl: "https://github.com/Praneel7015/flowforge"   # required
@@ -40,7 +40,7 @@ Long-form MDX write-up goes here. Standard markdown + JSX.
 | `title`        | string                      | ✅       | rendered lowercase to match the design voice     |
 | `slug`         | string                      | ✅       | unique; matches filename; used in the URL        |
 | `squad`        | `"low"` \| `"high"`         | ✅       | low → green, high → red                          |
-| `month`        | `"APR"` \| `"MAY"` \| `"JUN"` | ✅      | also feeds the timeline                          |
+| `month`        | `"APR"` … `"NOV"`           | ✅       | also feeds the timeline                          |
 | `order`        | number                      | ✅       | ascending sort                                   |
 | `summary`      | string                      | ✅       | card + meta description                          |
 | `repoUrl`      | url                         | ✅       | drives the GitHub contributor fetch              |

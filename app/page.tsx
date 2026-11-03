@@ -33,7 +33,7 @@ const jsonLd = {
   name: "highcortisol.xyz",
   url: SITE.url,
   description: SITE.description,
-  sameAs: [SITE.org],
+  sameAs: [SITE.org, SITE.profile],
 };
 
 export default function HomePage() {
