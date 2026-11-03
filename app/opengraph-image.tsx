@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getAllProjects } from "@/lib/projects";
+import { SITE } from "@/lib/site";
 
 export const alt = "highcortisol.xyz — two squads, one hormone";
 export const size = { width: 1200, height: 630 };
@@ -76,7 +77,7 @@ export default function OgImage() {
         {/* Main content */}
         <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 12 }}>
           <div style={{ fontSize: 13, letterSpacing: "0.1em", color: "#5fd699", display: "flex" }}>
-            BIOMETRIC OS · APR—NOV 2026
+            BIOMETRIC OS · {SITE.period}
           </div>
           <div
             style={{
