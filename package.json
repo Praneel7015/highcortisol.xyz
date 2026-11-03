@@ -12,14 +12,14 @@
     "fetch:contributors": "node scripts/fetch-contributors.mjs"
   },
   "dependencies": {
-    "geist": "^1.7.2",
+    "geist": "^1.9.0",
     "gray-matter": "^4.0.3",
-    "next": "16.2.9",
+    "next": "16.4.3",
     "next-mdx-remote": "^6.0.0",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "remark-gfm": "^4.0.1",
-    "zod": "^4.4.3"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -27,7 +27,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.9",
+    "eslint-config-next": "16.4.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
