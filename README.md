@@ -1,3 +1,10 @@
+# highcortisol.xyz
+
+[![CI](https://github.com/Praneel7015/highcortisol.xyz/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/Praneel7015/highcortisol.xyz/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/Praneel7015/highcortisol.xyz/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/Praneel7015/highcortisol.xyz/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Praneel7015/highcortisol.xyz/badge)](https://scorecard.dev/viewer/?uri=github.com/Praneel7015/highcortisol.xyz)
+[![CodeRabbit Reviews](https://img.shields.io/coderabbit/prs/github/Praneel7015/highcortisol.xyz?labelColor=171717&color=FF570A&label=CodeRabbit+Reviews)](https://coderabbit.ai)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

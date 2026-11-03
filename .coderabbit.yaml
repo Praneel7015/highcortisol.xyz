@@ -1,0 +1,68 @@
+language: en-US
+
+reviews:
+  profile: chill
+  high_level_summary: true
+  poem: false
+  review_status: true
+  path_filters:
+    - "!**/package-lock.json"
+    - "!.next/**"
+    - "!content/contributors.generated.json"
+  path_instructions:
+    - path: "content/projects/*.mdx"
+      instructions: |
+        One project per file. Frontmatter must satisfy the Zod schema
+        ProjectFrontmatter in lib/projects.ts: title, slug (equal to the
+        filename), squad ("low" | "high"), month (one of MONTHS), numeric
+        order, summary, repoUrl, optional liveUrl (both http(s)), optional
+        numeric bpm, tags as a string array, and the optional contributors
+        add/exclude/roles override. Flag any field the schema would reject
+        or silently ignore. The write-up keeps the lowercase voice and ends
+        with a VITALS list. Flag bold or italic markers split across a line
+        break; MDX renders them as literal asterisks.
+    - path: "{app,components}/**/*.tsx"
+      instructions: |
+        Next.js 16 App Router with React 19. Read node_modules/next/dist/docs
+        before assuming an API; this version has breaking changes. Flag
+        client components that could stay server components, refs read or
+        written during render, synchronous setState inside effects, and
+        counts or dates that are hardcoded when they can be derived from
+        content/.
+        Keep components accessible: links and buttons need discernible
+        names, external links keep rel="noreferrer", decorative visuals
+        (canvas, ticker, ECG) stay aria-hidden, animation respects
+        prefers-reduced-motion, text keeps WCAG AA contrast in both themes,
+        and headings stay in order.
+    - path: "scripts/**/*.mjs"
+      instructions: |
+        Build-time GitHub fetches. They must never fail the build: on error,
+        keep the committed JSON. Never log the token.
+    - path: ".github/workflows/*.yml"
+      instructions: |
+        Actions must be pinned to a full commit SHA with a version comment.
+        Keep permissions least-privilege per job and persist-credentials
+        false on checkout.
+  pre_merge_checks:
+    # The 80% docstring target is CodeRabbit's default, not a repo rule.
+    docstrings:
+      mode: "off"
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - "^master$"
+  tools:
+    eslint:
+      enabled: true
+    gitleaks:
+      enabled: true
+    actionlint:
+      enabled: true
+    yamllint:
+      enabled: true
+    markdownlint:
+      enabled: true
+
+chat:
+  auto_reply: true

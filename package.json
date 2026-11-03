@@ -7,7 +7,9 @@
     "prebuild": "node scripts/fetch-contributors.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "fetch:contributors": "node scripts/fetch-contributors.mjs"
   },
   "dependencies": {
     "geist": "^1.7.2",
