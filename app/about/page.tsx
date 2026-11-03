@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   },
 };
 
+const PROJECTS = getAllProjects();
+const builds = (month: string) => PROJECTS.filter((p) => p.month === month).length;
+
 const TIMELINE = [
   {
     month: "APR",
@@ -41,7 +44,7 @@ const TIMELINE = [
   {
     month: "AUG",
     label: "Hackathon season",
-    body: "Six builds in one month. A night-city racer, a 3D dream site, multi-agent support on CockroachDB, a real estate lead agent, and a revenue recovery agent for the Razorpay buildathon.",
+    body: `${builds("AUG")} builds in one month. A night-city racer, a 3D dream site, multi-agent support on CockroachDB, a real estate lead agent, and a revenue recovery agent for the Razorpay buildathon.`,
   },
   {
     month: "SEP",
@@ -51,7 +54,7 @@ const TIMELINE = [
   {
     month: "NOW",
     label: "Still on the lawn",
-    body: `${getAllProjects().length} builds shipped. ${contributors.count} contributors. The next hackathon is already on the calendar.`,
+    body: `${PROJECTS.length} builds shipped. ${contributors.count} contributors. The next hackathon is already on the calendar.`,
   },
 ];
 

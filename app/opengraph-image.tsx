@@ -1,11 +1,12 @@
 import { ImageResponse } from "next/og";
+import { getAllProjects } from "@/lib/projects";
 
-export const runtime = "edge";
 export const alt = "highcortisol.xyz — two squads, one hormone";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function OgImage() {
+  const builds = getAllProjects().length;
   return new ImageResponse(
     (
       <div
@@ -101,7 +102,7 @@ export default function OgImage() {
               display: "flex",
             }}
           >
-            Two squads, one hormone. 22 builds, two nervous systems, one lawn.
+            Two squads, one hormone. {builds} builds, two nervous systems, one lawn.
           </div>
           <div style={{ display: "flex", gap: 16, marginTop: 12 }}>
             <span
